@@ -22,15 +22,15 @@ def getExtOrIntegerDefault(name) {
 }
 
 android {
-    compileSdkVersion getExtOrIntegerDefault('compileSdkVersion')
-    buildToolsVersion getExtOrDefault('buildToolsVersion')
-
+    compileSdkVersion safeExtGet('compileSdkVersion', 29)
+    buildToolsVersion safeExtGet('buildToolsVersion', '29.0.2')
+    
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion getExtOrIntegerDefault('targetSdkVersion')
-        versionCode 1
-        versionName "1.0"
+        multiDexEnabled true
+        minSdkVersion safeExtGet('minSdkVersion', 16)
+        targetSdkVersion safeExtGet('targetSdkVersion', 29)
     }
+    
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
